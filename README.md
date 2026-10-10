@@ -22,3 +22,21 @@ Illustrative stock photographs from Unsplash; they do not depict an actual busin
 - https://images.unsplash.com/photo-1632733711679-529326f6db12 (automotive electrical work)
 - https://images.unsplash.com/photo-1486262715619-67b85e0b08d3 (engine components)
 License: https://unsplash.com/license/ — commercial use permitted. The original photos were resized and encoded as WebP. All fonts are self-hosted; upstream OFL license links are in FONT-LICENSES.md.
+
+## Live website
+https://vienna-auto-premium.vercel.app/
+
+![Desktop preview](docs/desktop-preview.jpg)
+
+## Verification
+- TypeScript and Vite production build passes.
+- Responsive browser-frame checks at exact 360, 375, 390, 430, 1280, 1440 and 1920 CSS pixels; no horizontal overflow.
+- Mobile menu keyboard activation, focus containment and Escape dismissal checked.
+- Service links preselect the enquiry subject; required fields and email format use native validation.
+- Successful form validation explicitly says that nothing was sent.
+- Every internal anchor resolves; six main sections, de-AT language, local fonts and WebP assets.
+- No application console errors observed; browser-extension errors are outside the application.
+- These are responsive desktop-browser checks, not hardware tests or a measured Core Web Vitals audit.
+
+## Reference synthesis
+Auto-Spatny inspired editorial pacing; Motus and Lucky Car informed clear enquiry actions; Auto Stahl informed hierarchy; Maroltinger Garage reinforced the importance of real workshop imagery and understandable services. KFZ Holub could not be inspected because the browser gateway reported a certificate hostname mismatch. No reference company branding, source or imagery is reused.
