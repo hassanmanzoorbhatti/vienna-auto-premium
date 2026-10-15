@@ -1,42 +1,36 @@
-import {useState} from 'react';
-import {Header,Footer,Photo,CTA,FAQ,Contact,services,ArrowUpRight,ArrowRight,Check} from './common';
+import {Header,Footer,Photo,CTA,ArrowUpRight,ArrowRight} from './common';
 
-const locations=[
- {name:'Werkstatt & Spenglerei',address:'Jedleseer Straße 53, 1210 Wien',phone:'+43 1 271 21 18',email:'office@sklenar-wien.at',hours:'Mo–Do 08:00–18:00 · Fr 08:00–16:00'},
- {name:'Sklenar',address:'Tetmajergasse 5, 1210 Wien',phone:'+43 1 271 53 66',email:'office@sklenar-wien.at',hours:'Mo–Do 08:00–18:00 · Fr 08:00–16:00'}
+const items=[
+ ['§57a-Begutachtung','Pickerl-Überprüfung nach §57a laut öffentlichem Werkstattprofil.'],
+ ['Klimaservice','Klimaanlagenservice und Reparatur.'],
+ ['Achsvermessung','Computer-Achsvermessung für die präzise Fahrwerkskontrolle.'],
+ ['Karosserie & Scheiben','Karosseriespenglerarbeiten und Steinschlagreparatur.']
 ];
-export default function App(){
- const [service,setService]=useState('');
- return <>
-  <Header brand="SKLENAR" word="WERKSTATT · FLORIDSDORF" variant="premium"/>
-  <main id="inhalt">
-   <section className="hero"><div className="container hero-grid">
-    <div className="hero-copy"><span className="eyebrow"><span/>Sklenar · Wien 21</span>
-     <h1>Erfahrung für<br/>Ihr <em>Fahrzeug.</em></h1>
-     <p>Reparatur, Diagnose und Karosseriearbeiten in Floridsdorf – vom laufenden Service bis zur sorgfältigen Instandsetzung.</p>
-     <CTA>Kontakt aufnehmen</CTA><div className="hero-meta"><span>Floridsdorf · Wien 21</span><span>Seit 1935*</span></div>
-    </div><div className="hero-visual"><Photo hero name="mechanic" alt="Illustratives Werkstattfoto aus der Designvorlage; keine Originalaufnahme von Sklenar"/>
-     <div className="hero-image-label"><span>MECHANIK · KAROSSERIE · LACK</span><ArrowUpRight/></div><div className="hero-photo-counter">SKLENAR · WERKSTATTKONZEPT</div>
-    </div>
-   </div><div className="hero-bottom container"><span>*Jahresangabe nach der Website des Betriebs.</span><a href="#leistungen">Leistungen ansehen<ArrowRight size={17}/></a></div></section>
-   <section className="services section" id="leistungen"><div className="container">
-    <div className="section-head"><div><span className="eyebrow">01 / Leistungen</span><h2>Von der Diagnose<br/><em>bis zur Lackierung.</em></h2></div><p>Die Unternehmenswebsite führt mechanische Services, Karosserie, Spenglerei und Lackierarbeiten an.</p></div>
-    <div className="service-editorial"><div className="service-photo"><Photo name="repair" alt="Illustratives Fahrzeugreparaturfoto aus der Designvorlage"/><span>REPARATUR · SPENGLEREI · LACKIERUNG</span></div>
-     <div className="service-lines">{services.map((s,i)=><a key={s.title} href="#kontakt" onClick={()=>setService(s.value)}><small>0{i+1}</small><div><h3>{s.title}</h3><p>{s.text}</p></div><ArrowUpRight size={22}/></a>)}</div>
-    </div><p className="small-service">Weitere Angaben auf der Website: Klimaservice, 3D-Achsvermessung, Räderservice, Waschstraße und Leihwagen. Umfang und Verfügbarkeit bitte direkt erfragen.</p>
-   </div></section>
-   <section className="attitude section" id="haltung"><div className="container attitude-layout">
-    <div className="craft-photo"><Photo name="craft" alt="Illustratives Detailfoto aus der Werkstattvorlage, nicht bei Sklenar aufgenommen"/><span>OLDTIMER · SPENGLEREI · LACK</span></div>
-    <div><span className="eyebrow">02 / Werkstatt</span><h2>Sorgfältige Arbeit<br/><em>mit Erfahrung.</em></h2><p className="lead">Auch Karosserie und Lack gehören zum Werkstattangebot.</p><p>Sklenar beschreibt Arbeiten an Old- und Youngtimern, Fahrzeugumbauten, Dellen, Windschutzscheiben und Steinschlägen. Für Versicherungsfälle nennt die Website Unterstützung bei der Schadensabwicklung.</p><ul className="values">{['Fehlerdiagnose & Reparatur','Pickerl bis 3,5 t','Karosserie- und Lackierarbeiten'].map(x=><li key={x}><Check size={17}/>{x}</li>)}</ul><CTA secondary>Standort auswählen</CTA></div>
-   </div></section>
-   <section className="process section" id="ablauf"><div className="container"><div className="section-head"><div><span className="eyebrow">03 / Ablauf</span><h2>Ihr Anliegen direkt<br/><em>besprechen.</em></h2></div><p>Kontaktieren Sie die passende Werkstatt, nennen Sie Ihr Fahrzeug und schildern Sie kurz den gewünschten Service.</p></div>
-    <div className="process-grid">{[['Anliegen schildern','Erklären Sie kurz, was an Ihrem Fahrzeug gemacht werden soll.'],['Standort wählen','Fragen Sie bei der passenden Sklenar-Adresse nach.'],['Arbeiten abstimmen','Die Werkstatt klärt Umfang, Verfügbarkeit und nächsten Schritt.']].map(([t,p],i)=><article key={t}><span className="process-number">0{i+1}</span><h3>{t}</h3><p>{p}</p><ArrowRight size={20}/></article>)}</div>
-   </div></section>
-   <section className="locations section" id="standorte"><div className="container"><div className="section-head"><div><span className="eyebrow">04 / Standorte</span><h2>Zwei Adressen<br/><em>in Floridsdorf.</em></h2></div><p>Kontaktdaten stammen aus der Unternehmenswebsite. Die angezeigten Zeiten bitte vor dem Besuch direkt beim Betrieb bestätigen.</p></div>
-    <div className="location-grid">{locations.map((l,i)=><article key={l.name}><small>0{i+1} · WIEN 21</small><h3>{l.name}</h3><p>{l.address}</p><a href={`tel:${l.phone.replace(/[^+0-9]/g,'')}`}>{l.phone}</a><a href={`mailto:${l.email}`}>{l.email}</a><span>{l.hours}</span></article>)}</div>
-   </div></section>
-   <FAQ title="Gut informiert zur Werkstatt."/>
-   <Contact service={service} title={<>Sklenar<br/><em>in Floridsdorf.</em></>} text="Kontaktieren Sie die Werkstatt in der Tetmajergasse. Diese Designvorschau übermittelt keine Anfragen."/>
-  </main><Footer brand="SKLENAR"/>
- </>;
-}
+export default function App(){return <>
+ <Header brand="STEINBÖCK" word="KFZ-MEISTERBETRIEB · WÄHRING" variant="premium"/>
+ <main id="inhalt">
+  <section className="hero"><div className="container hero-grid">
+   <div className="hero-copy"><span className="eyebrow"><span/>Freie Werkstatt · Wien 18</span>
+    <h1>Alles im Blick.<br/><em>Gut unterwegs.</em></h1>
+    <p>Ein Werkstattkonzept für STEINBÖCK in Währing – mit den öffentlich gelisteten Leistungen für alle Marken, §57a und Karosserie.</p>
+    <CTA>Werkstatt kontaktieren</CTA><div className="hero-meta"><span>Schopenhauerstraße 30 · 1180 Wien</span></div>
+   </div><div className="hero-visual"><Photo hero name="mechanic" alt="Illustratives Werkstattfoto aus der Designvorlage; keine Originalaufnahme von STEINBÖCK"/>
+    <div className="hero-image-label"><span>MEISTERBETRIEB · SERVICE · REPARATUR</span><ArrowUpRight/></div><div className="hero-photo-counter">WEBSITEKONZEPT · WIEN 18</div>
+   </div>
+  </div><div className="hero-bottom container"><span>Unverbindlicher Website-Entwurf · keine offizielle Seite</span><a href="#leistungen">Leistungen ansehen<ArrowRight size={17}/></a></div></section>
+  <section className="services section" id="leistungen"><div className="container">
+   <div className="section-head"><div><span className="eyebrow">01 / Leistungen</span><h2>Werkstattwissen<br/><em>für viele Marken.</em></h2></div><p>Die Leistungen hier orientieren sich am öffentlichen Herold-Unternehmenseintrag. Verfügbarkeit bitte direkt bestätigen.</p></div>
+   <div className="service-editorial"><div className="service-photo"><Photo name="repair" alt="Illustratives Reparaturfoto aus der Websitevorlage"/><span>REPARATUR · SERVICE · KAROSSERIE</span></div>
+    <div className="service-lines">{items.map(([title,desc],i)=><a key={title} href="#kontakt"><small>0{i+1}</small><div><h3>{title}</h3><p>{desc}</p></div><ArrowUpRight size={22}/></a>)}</div>
+   </div><p className="small-service">Der öffentliche Eintrag nennt einen KFZ-Meisterbetrieb für alle Marken sowie Klimaanlagenservice, Achsvermessung und Steinschlagreparatur.</p>
+  </div></section>
+  <section className="attitude section"><div className="container attitude-layout">
+   <div className="craft-photo"><Photo name="craft" alt="Illustratives Detailfoto aus der Werkstattvorlage; nicht am Standort aufgenommen"/><span>ILLUSTRATIVE VORSCHAU</span></div>
+   <div><span className="eyebrow">02 / Das Konzept</span><h2>Klar finden.<br/><em>Direkt anfragen.</em></h2><p className="lead">Standort, Leistungen und Kontakt stehen in dieser Vorschau schnell bereit.</p><p>Logo, Bildwelt und Texte sind als Gestaltungsvorschlag angelegt. Das verwendete Werkstattfoto ist illustrativ; es stammt nicht aus dem Betrieb.</p><ul className="values">{['KFZ-Meisterbetrieb','§57a & Klimaservice','Karosserie & Achsvermessung'].map(x=><li key={x}>{x}</li>)}</ul><CTA secondary>Kontaktdaten ansehen</CTA></div>
+  </div></section>
+  <section className="locations section" id="kontakt"><div className="container"><div className="section-head"><div><span className="eyebrow">03 / Kontakt</span><h2>STEINBÖCK<br/><em>in Währing.</em></h2></div><p>Kontaktdaten aus dem öffentlichen Herold-Eintrag. Bitte aktuelle Erreichbarkeit vor einem Besuch prüfen.</p></div>
+   <div className="location-grid"><article><small>WIEN 18 · WÄHRING</small><h3>STEINBÖCK Handels KG</h3><p>Schopenhauerstraße 30<br/>1180 Wien, Österreich</p><a href="tel:+4319578947">+43 1 9578947</a><a href="mailto:office-steinboeck@aon.at">office-steinboeck@aon.at</a><span>Mo–Do 08:30–18:00 · laut Herold<br/>Aktuelle Zeiten bitte telefonisch bestätigen</span><a href="https://www.google.com/maps/search/?api=1&query=Schopenhauerstra%C3%9Fe+30+1180+Wien" target="_blank" rel="noreferrer">Route in Google Maps</a></article></div>
+  </div></section>
+  <section className="faq section"><div className="container"><span className="eyebrow">Websiteentwurf</span><h2>Eine unverbindliche<br/><em>Designvorschau.</em></h2><p className="lead">Dies ist ein unabhängiger Demo-Entwurf, keine offizielle STEINBÖCK-Website. Es werden keine Anfragen übermittelt.</p></div></section>
+ </main><Footer brand="STEINBÖCK"/>
+ </>;}
